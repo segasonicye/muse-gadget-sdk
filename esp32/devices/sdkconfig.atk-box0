@@ -1,0 +1,37 @@
+# Copyright (c) Meta Platforms, Inc. and affiliates.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Alientek ATK-DNESP32S3-BOX0: ESP32-S3 with 16 MB quad flash and 8 MB
+# embedded octal PSRAM, native USB Serial/JTAG (303a:1001). Bench-verified
+# (esptool, 2026-10): flash vendor 0x68 device 0x4018 quad 3.3 V, PSRAM
+# AP_3v3. Pins from xiaozhi-esp32's board support
+# (main/boards/alientek/atk-dnesp32s3-box0). Full Muse build; the board
+# overlay in devices/sdkconfig.muse-atk-box0 carries the Muse settings.
+# Load last, after sdkconfig.defaults.
+CONFIG_IDF_TARGET="esp32s3"
+CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240=y
+
+# Buttons: middle (GPIO4) is talk, left (GPIO3) menu down, right (GPIO0) menu up / long-press aux; the display backend is Muse.
+CONFIG_HOMEHUB_LED_BACKEND_NONE=y
+CONFIG_HOMEHUB_BUTTON_GPIO=0
+
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
+CONFIG_ESPTOOLPY_FLASHSIZE="16MB"
+
+# 8 MB embedded octal PSRAM.
+CONFIG_SPIRAM=y
+CONFIG_SPIRAM_MODE_OCT=y
+CONFIG_SPIRAM_MODE_QUAD=n
+CONFIG_SPIRAM_SPEED_80M=y
+CONFIG_BT_NIMBLE_MEM_ALLOC_MODE_EXTERNAL=y

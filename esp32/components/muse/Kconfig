@@ -100,6 +100,9 @@ menu "Muse"
         config MUSE_BOARD_AI_PASSPORT
             bool "FoloToy AI Passport (ESP32-C3, three buttons, no touch)"
             depends on IDF_TARGET_ESP32C3
+
+        config MUSE_BOARD_ATK_BOX0
+            bool "Alientek ATK-DNESP32S3-BOX0 (ESP32-S3, 240x240 ST7789, ES8311, no touch)"
     endchoice
 
     config MUSE_ENABLED
@@ -136,6 +139,7 @@ menu "Muse"
         default "vn_s3_183" if MUSE_BOARD_VN_S3_183
         default "ai_passport" if MUSE_BOARD_AI_PASSPORT
         default "xingzhi_cube" if MUSE_BOARD_XINGZHI_CUBE
+        default "atk_box0" if MUSE_BOARD_ATK_BOX0
         default "none"
 
     # The Muse tools' serial port: the console UART behind the board's USB
